@@ -18,7 +18,7 @@ public class TarefaService {
     }
 
     public List<Tarefa> listarTarefas() {
-        return null;
+        return tarefaRepository.findAll();
     }
 
     public Optional<Tarefa> listarPorId(int id) {
@@ -29,7 +29,5 @@ public class TarefaService {
         return;
     }
 
-    public void deletarTarefa(int id) {
-        return;
-    }
+    public void deletarTarefa(int id) { tarefaRepository.deleteById(id);}
 }

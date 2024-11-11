@@ -26,7 +26,8 @@ public class TarefaController {
 
     @GetMapping
     public ResponseEntity<List <Tarefa>> listarTodasTarefas() {
-        return null;
+        tarefaService.listarTarefas();
+        return ResponseEntity.status(HttpStatus.OK).body(tarefaService.listarTarefas());
     }
 
     @GetMapping("/{id}")
@@ -44,6 +45,7 @@ public class TarefaController {
 
     @DeleteMapping("/{id}")
     public ResponseEntity<String> deletarTarefa(@PathVariable int id) {
+        tarefaService.deletarTarefa(id);
         return null;
     }
 }
