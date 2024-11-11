@@ -1,42 +1,85 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+.App {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 100vh;
+  font-family: Arial, sans-serif;
+  text-align: center; 
+  padding: 20px;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+h1 {
+  color: #333;
+  margin-bottom: 20px;
+  margin-left: 50px; 
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.task-container {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  max-width: 1200px;
+  width: 100%;
+  position: relative; 
+  height: 80vh; 
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+.task-form {
+  position: sticky;
+  top: 20px;
+  flex: 0.4;
+  max-width: 400px;
+  margin: 0;
 }
 
-.card {
-  padding: 2em;
+.task-list {
+  flex: 0.6;
+  max-width: 600px;
+  height: 85vh; 
+  overflow-y: auto; 
+  margin-top: 20px; 
 }
 
-.read-the-docs {
-  color: #888;
+.task-list::-webkit-scrollbar {
+  display: none; 
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  max-width: 400px;
+  margin: auto;
+}
+
+input, textarea, select {
+  padding: 10px;
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+
+button {
+  padding: 10px;
+  background-color: #1c3cba;
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 8px;
+}
+
+button:hover {
+  background-color: #456ba0;
+}
+
+small {
+  color: #999;
+  font-size: 12px;
+}
+
+h2 {
+  font-size: 24px;
+  color: #333;
+  margin-bottom: 20px; 
+  text-align: center; 
 }
