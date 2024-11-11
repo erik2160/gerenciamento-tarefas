@@ -25,9 +25,9 @@ public class TarefaController {
     }
 
     @GetMapping
-    public ResponseEntity<List <Tarefa>> listarTodasTarefas() {
-        tarefaService.listarTarefas();
-        return ResponseEntity.status(HttpStatus.OK).body(tarefaService.listarTarefas());
+    public ResponseEntity<List<Tarefa>> listarTodasTarefas() {
+        List<Tarefa> tarefa = tarefaService.listarTarefas();
+        return ResponseEntity.status(HttpStatus.OK).body(tarefa);
     }
 
     @GetMapping("/{id}")
