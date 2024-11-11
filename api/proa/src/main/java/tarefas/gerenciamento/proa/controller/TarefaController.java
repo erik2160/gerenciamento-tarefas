@@ -34,7 +34,7 @@ public class TarefaController {
         Optional<Tarefa> tarefa = tarefaService.listarPorId(id);
 
         return tarefa.map(ResponseEntity::ok)
-                .orElseGet(() -> ResponseEntity.noContent().build());
+                .orElseGet(() -> ResponseEntity.notFound().build());
     }
 
     @PutMapping("/{id}")
