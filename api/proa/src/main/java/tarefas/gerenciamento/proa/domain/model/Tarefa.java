@@ -1,9 +1,6 @@
 package tarefas.gerenciamento.proa.domain.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -19,11 +16,15 @@ public class Tarefa {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
+    @Column(length = 30, nullable = false)
     private String nome;
 
+    @Column(length = 150, nullable = false)
     private String descricao;
 
+    @Column(nullable = false)
     private int prioridade;
 
+    @Column(nullable = false)
     private Date validade;
 }
