@@ -26,7 +26,7 @@ public class TarefaService {
     }
 
     public void atualizarTarefa(int id) {
-        tarefaRepository.updateTarefaById(id);
+        return;
     }
 
     public void deletarTarefa(int id) {
