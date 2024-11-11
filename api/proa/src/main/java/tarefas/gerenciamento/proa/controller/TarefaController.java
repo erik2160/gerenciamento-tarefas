@@ -1,9 +1,7 @@
 package tarefas.gerenciamento.proa.controller;
 
-import org.apache.coyote.Response;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import tarefas.gerenciamento.proa.domain.model.Tarefa;
 import tarefas.gerenciamento.proa.service.TarefaService;
@@ -11,7 +9,7 @@ import tarefas.gerenciamento.proa.service.TarefaService;
 import java.util.List;
 import java.util.Optional;
 
-@Controller
+@RestController
 @RequestMapping("/tarefas")
 public class TarefaController {
     private final TarefaService tarefaService;
@@ -35,7 +33,9 @@ public class TarefaController {
     @GetMapping("/{id}")
     public ResponseEntity<Tarefa> listarTarefa(@PathVariable int id) {
         Optional<Tarefa> tarefa = tarefaService.listarPorId(id);
-        return null;
+
+        return tarefa.map(ResponseEntity::ok)
+                .orElseGet(() -> ResponseEntity.noContent().build());
     }
 
     @PutMapping("/{id}")
