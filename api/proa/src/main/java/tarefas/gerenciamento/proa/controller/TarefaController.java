@@ -19,18 +19,21 @@ public class TarefaController {
     }
 
     @PostMapping
+    @CrossOrigin
     public ResponseEntity<Tarefa> criarTarefa(@RequestBody Tarefa tarefa) {
         tarefaService.criarTarefa(tarefa);
         return ResponseEntity.status(HttpStatus.CREATED).body(tarefa);
     }
 
     @GetMapping
+    @CrossOrigin
     public ResponseEntity<List<Tarefa>> listarTodasTarefas() {
         List<Tarefa> tarefa = tarefaService.listarTarefas();
         return ResponseEntity.status(HttpStatus.OK).body(tarefa);
     }
 
     @GetMapping("/{id}")
+    @CrossOrigin
     public ResponseEntity<Tarefa> listarTarefa(@PathVariable int id) {
         Optional<Tarefa> tarefa = tarefaService.listarPorId(id);
 
@@ -39,6 +42,7 @@ public class TarefaController {
     }
 
     @PutMapping("/{id}")
+    @CrossOrigin
     public ResponseEntity<Tarefa> atualizarTarefa(@PathVariable int id, @RequestBody Tarefa tarefaAtualizada) {
         Optional<Tarefa> tarefa = tarefaService.atualizarTarefa(id, tarefaAtualizada);
 
@@ -47,6 +51,7 @@ public class TarefaController {
     }
 
     @DeleteMapping("/{id}")
+    @CrossOrigin
     public ResponseEntity<String> deletarTarefa(@PathVariable int id) {
         int tarefaExiste = tarefaService.deletarTarefa(id);
         if (tarefaExiste == 1) {
