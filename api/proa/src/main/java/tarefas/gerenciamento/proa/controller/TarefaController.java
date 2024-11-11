@@ -48,7 +48,10 @@ public class TarefaController {
 
     @DeleteMapping("/{id}")
     public ResponseEntity<String> deletarTarefa(@PathVariable int id) {
-        tarefaService.deletarTarefa(id);
-        return ResponseEntity.status(HttpStatus.NO_CONTENT).body("Deletado!");
+        int tarefaExiste = tarefaService.deletarTarefa(id);
+        if (tarefaExiste == 1) {
+            return ResponseEntity.status(HttpStatus.NO_CONTENT).body("Deletado!");
+        }
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Não encontrado!");
     }
 }

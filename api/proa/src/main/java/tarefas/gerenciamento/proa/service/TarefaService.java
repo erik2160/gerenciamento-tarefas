@@ -39,7 +39,13 @@ public class TarefaService {
         return Optional.empty();
     }
 
-    public void deletarTarefa(int id) {
-        tarefaRepository.deleteById(id);
+    public int deletarTarefa(int id) {
+        Optional<Tarefa> tarefaExistente = tarefaRepository.findById(id);
+
+        if (tarefaExistente.isPresent()) {
+            tarefaRepository.deleteById(id);
+            return 1;
+        }
+        return 0;
     }
 }
