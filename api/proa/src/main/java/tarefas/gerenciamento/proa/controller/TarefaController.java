@@ -74,11 +74,11 @@ public class TarefaController {
 
     @DeleteMapping("/{id}")
     @CrossOrigin
-    public ResponseEntity<String> deletarTarefa(@PathVariable int id) {
+    public ResponseEntity<HttpStatus> deletarTarefa(@PathVariable int id) {
         int tarefaExiste = tarefaService.deletarTarefa(id);
         if (tarefaExiste == 1) {
-            return ResponseEntity.status(HttpStatus.NO_CONTENT).body("Deletado!");
+            return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
         }
-        return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Não encontrado!");
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
     }
 }
