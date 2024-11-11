@@ -25,9 +25,21 @@ public class TarefaService {
         return tarefaRepository.findById(id);
     }
 
-    public void atualizarTarefa(int id) {
-        return;
+    public Optional<Tarefa> atualizarTarefa(int id, Tarefa tarefaAtualizada) {
+        Optional<Tarefa> tarefaAtualizar = tarefaRepository.findById(id);
+
+        if (tarefaAtualizar.isPresent()) {
+            Tarefa tarefa = tarefaAtualizar.get();
+            tarefa.setNome(tarefaAtualizada.getNome());
+            tarefa.setDescricao(tarefaAtualizada.getDescricao());
+            tarefa.setPrioridade(tarefaAtualizada.getPrioridade());
+            tarefa.setValidade(tarefaAtualizada.getValidade());
+            return Optional.of(tarefaRepository.save(tarefa));
+        }
+        return Optional.empty();
     }
 
-    public void deletarTarefa(int id) { tarefaRepository.deleteById(id);}
+    public void deletarTarefa(int id) {
+        tarefaRepository.deleteById(id);
+    }
 }

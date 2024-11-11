@@ -39,13 +39,16 @@ public class TarefaController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Tarefa> atualizarTarefa(@PathVariable int id) {
-        return null;
+    public ResponseEntity<Tarefa> atualizarTarefa(@PathVariable int id, @RequestBody Tarefa tarefaAtualizada) {
+        Optional<Tarefa> tarefa = tarefaService.atualizarTarefa(id, tarefaAtualizada);
+
+        return tarefa.map(ResponseEntity::ok)
+                .orElseGet(() -> ResponseEntity.notFound().build());
     }
 
     @DeleteMapping("/{id}")
     public ResponseEntity<String> deletarTarefa(@PathVariable int id) {
         tarefaService.deletarTarefa(id);
-        return null;
+        return ResponseEntity.status(HttpStatus.NO_CONTENT).body("Deletado!");
     }
 }
